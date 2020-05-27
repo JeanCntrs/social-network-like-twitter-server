@@ -1,4 +1,4 @@
-module github.com/JeanCntrs/social-network-like-twitter
+module github.com/JeanCntrs/social-network-like-twitter-server
 
 go 1.12
 
