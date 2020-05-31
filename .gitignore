@@ -1,2 +1,2 @@
 main.exe
-bd/connectDB.go
+db/connectDB.go
