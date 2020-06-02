@@ -13,7 +13,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	var u models.User
 
 	err := json.NewDecoder(r.Body).Decode(&u)
-	if err != nill {
+	if err != nil {
 		http.Error(w, "Error en los datos recibidos "+err.Error(), 400)
 	}
 

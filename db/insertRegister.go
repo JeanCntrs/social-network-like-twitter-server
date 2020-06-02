@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-// InsertRegister : Es el final del endpiont, donde inserto los datos
+// InsertRegister : Es el final del endpoint, donde inserto los datos
 func InsertRegister(u models.User) (string, bool, error) {
 	ctn, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
