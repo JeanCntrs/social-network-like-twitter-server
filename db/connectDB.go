@@ -14,11 +14,11 @@ var MongoConnection = ConnectMongo()
 
 // ConnectMongo : Función que retorna la conexión a la base de datos
 func ConnectMongo() *mongo.Client {
-	// Context : Permiten comunicar información entre ejecución y ejecución. También permite setear valores, por ejemplo TimeOut
-	// Context.TODO : Conectar sin restricción, es por default
 	setConnectionString()
 	var clientOptions = options.Client().ApplyURI(os.Getenv("CONNECTION_STRING"))
 
+	// Context : Permiten comunicar información entre ejecución y ejecución. También permite setear valores, por ejemplo TimeOut
+	// Context.TODO : Conectar sin restricción, es por default
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err.Error())

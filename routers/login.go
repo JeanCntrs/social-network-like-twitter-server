@@ -3,7 +3,10 @@ package routers
 import (
 	"encoding/json"
 	"net/http"
+	"time"
 
+	"github.com/JeanCntrs/social-network-like-twitter-server/db"
+	"github.com/JeanCntrs/social-network-like-twitter-server/jwt"
 	"github.com/JeanCntrs/social-network-like-twitter-server/models"
 )
 
@@ -24,7 +27,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	/* document, found := db.TryLogin(u.Email, u.Password)
+	document, found := db.TryLogin(u.Email, u.Password)
 	if found == false {
 		http.Error(w, "Usuario y/o contraseña inválida", 400)
 		return
@@ -49,5 +52,5 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		Name:    "token",
 		Value:   jwtKey,
 		Expires: expirationTime,
-	}) */
+	})
 }
