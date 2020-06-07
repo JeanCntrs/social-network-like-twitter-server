@@ -18,7 +18,7 @@ var UserID string
 // ProcessToken : Procesa el token y extrae sus valores
 func ProcessToken(tk string) (*models.Claim, bool, string, error) {
 	myPassword := []byte("P4ssw0rd t0 s1gn t0k3n AxZ 938")
-	claims := &models.Claim()
+	claims := &models.Claim{}
 
 	splitToken := strings.Split(tk, "Bearer")
 	if len(splitToken) != 2 {
@@ -27,14 +27,14 @@ func ProcessToken(tk string) (*models.Claim, bool, string, error) {
 
 	tk = strings.TrimSpace(splitToken[1])
 
-	tkn, err := jwt.ParseWithClaims(tk, claims, func(token *jwt.token) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(tk, claims, func(token *jwt.Token) (interface{}, error) {
 		return myPassword, nil
 	})
 	if err == nil {
 		_, found, _ := db.CheckUserExist(claims.Email)
 		if found == true {
 			Email = claims.Email
-			UserId = claims.ID.Hex()
+			UserID = claims.ID.Hex()
 		}
 		return claims, found, UserID, nil
 	}
