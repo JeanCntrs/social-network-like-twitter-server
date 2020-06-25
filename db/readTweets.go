@@ -14,8 +14,9 @@ import (
 func ReadTweets(ID string, page int64) ([]*models.ReturnTweets, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
+
 	db := MongoConnection.Database("SocialNetworkLikeTwitter")
-	coll := db.Collection(("tweets"))
+	coll := db.Collection("tweets")
 
 	var results []*models.ReturnTweets
 
