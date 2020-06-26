@@ -23,6 +23,10 @@ func RouteHandlers() {
 	router.HandleFunc("/tweet", middleware.CheckDB(middleware.ValidateJWT(routers.SaveTweet))).Methods("POST")
 	router.HandleFunc("/leer-tweets", middleware.CheckDB(middleware.ValidateJWT(routers.ReadTweets))).Methods("GET")
 	router.HandleFunc("/eliminar-tweet", middleware.CheckDB(middleware.ValidateJWT(routers.DeleteTweet))).Methods("DELETE")
+	router.HandleFunc("/subir-avatar", middleware.CheckDB(middleware.ValidateJWT(routers.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/subir-banner", middleware.CheckDB(middleware.ValidateJWT(routers.UploadBanner))).Methods("POST")
+	router.HandleFunc("/obtener-avatar", middleware.CheckDB(routers.GetAvatar)).Methods("GET")
+	router.HandleFunc("/obtener-banner", middleware.CheckDB(routers.GetBanner)).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
