@@ -33,6 +33,8 @@ func RouteHandlers() {
 	router.HandleFunc("/baja-relacion", middleware.CheckDB(middleware.ValidateJWT(routers.LowRelation))).Methods("DELETE")
 	router.HandleFunc("/consulta-relacion", middleware.CheckDB(middleware.ValidateJWT(routers.VerifyRelation))).Methods("GET")
 
+	router.HandleFunc("/lista-usuarios", middleware.CheckDB(middleware.ValidateJWT(routers.ListUsers))).Methods("GET")
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
