@@ -31,6 +31,7 @@ func RouteHandlers() {
 
 	router.HandleFunc("/alta-relacion", middleware.CheckDB(middleware.ValidateJWT(routers.HighRelation))).Methods("POST")
 	router.HandleFunc("/baja-relacion", middleware.CheckDB(middleware.ValidateJWT(routers.LowRelation))).Methods("DELETE")
+	router.HandleFunc("/consulta-relacion", middleware.CheckDB(middleware.ValidateJWT(routers.VerifyRelation))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
