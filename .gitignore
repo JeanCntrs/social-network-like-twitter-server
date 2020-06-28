@@ -1,5 +1,5 @@
 main.exe
-
+db/setEnvVariables.go
 
 # Folders
 uploads/avatars/
